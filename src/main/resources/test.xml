@@ -1,0 +1,34 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://wsdl.webservice.area.wisdom.com/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://www.chiss.org.cn/rhin/2015"
+                  name="OrganizationProviderImplService" targetNamespace="http://wsdl.webservice.area.wisdom.com/">
+    <wsdl:import location="http://localhost:8081/wsnt/organization?wsdl=OrganizationProvider.wsdl"
+                 namespace="http://www.chiss.org.cn/rhin/2015"></wsdl:import>
+    <wsdl:binding name="OrganizationProviderImplServiceSoapBinding" type="ns1:OrganizationProvider">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="OrganizationFeed">
+            <soap12:operation soapAction="OrganizationFeed" style="document"/>
+            <wsdl:input name="OrganizationFeed">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="OrganizationFeedResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="OrganizationQuery">
+            <soap12:operation soapAction="OrganizationQuery" style="document"/>
+            <wsdl:input name="OrganizationQuery">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="OrganizationQueryResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="OrganizationProviderImplService">
+        <wsdl:port binding="tns:OrganizationProviderImplServiceSoapBinding" name="OrganizationProviderImplPort">
+            <soap12:address location="http://localhost:8081/wsnt/organization"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
